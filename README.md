@@ -1,6 +1,6 @@
 # CAPSTONE - Frontend
 
-## Capstone Frontend Link:
+## Capstone Backend Link:
 
 https://github.com/prateeksingh132/CAPSTONE-Backend.git
 
