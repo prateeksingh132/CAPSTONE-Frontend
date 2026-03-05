@@ -1,4 +1,4 @@
-import React, { createContext, useReducer, useContext } from 'react';
+import { createContext, useReducer, useContext } from 'react';
 
 ///// referring from sba 320
 // logic: creating the context object here so i can share the cart state globally across the app.
