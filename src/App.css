@@ -314,3 +314,77 @@ body {
   font-size: 1rem;
   width: 100%;
 }
+
+
+/* --------------  Cart page styling --------------   */
+
+/* using flexbox to split the screen between the item list and the checkout summary */
+.cart-layout {
+  display: flex;
+  gap: 30px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.cart-items-section {
+  flex: 2;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* forcing the individual cart items into a horizontal row */
+.cart-item-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: white;
+  padding: 15px 20px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  flex-wrap: wrap;
+}
+
+.cart-img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+}
+
+.cart-item-details {
+  flex-grow: 1;
+  min-width: 150px;
+}
+
+.cart-item-details h3 {
+  margin: 0 0 10px 0;
+  color: #003366;
+}
+
+.cart-item-details a {
+  text-decoration: none;
+}
+
+.cart-item-actions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.quantity-text {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+/* styling the right-side summary box to pop out */
+.cart-summary-box {
+  flex: 1;
+  min-width: 300px;
+  background: white;
+  padding: 30px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
