@@ -1,7 +1,6 @@
 /* logic: i removed the default css and adding my gadgetshack styles from previous sbas */
 /* i have referred my previous SBAs 308A/318/319/320 css styling. i am keeping the theme and look similar. */
 
-/* FUTUREWORK: i tested, styling seems messed up. the homepage moved to the left, shop page styling doesnt aling well..check later */
 
 html,
 body {
@@ -408,4 +407,46 @@ body {
   border-radius: 8px;
   border: 1px solid #ddd;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+
+/* -------------- Product spec's styling --------------  */
+.specs-box {
+  background: #f9f9f9;
+  padding: 15px;
+  border-radius: 6px;
+  border: 1px solid #eee;
+}
+
+.specs-box ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.specs-box li {
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+}
+
+/* -------------- Admin dashboard styling --------------  */
+
+/* fixing the admin chart so it aligns well in the screen instead of being squished */
+.main_container > .card:has(.recharts-wrapper) {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+
+
+/* center empty state pages */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10vh;
+  text-align: center;
+  gap: 20px;
 }

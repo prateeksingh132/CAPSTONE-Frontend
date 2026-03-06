@@ -48,7 +48,7 @@ const Cart = () => {
     }
 
     return (
-        <div className="main_container">
+        <div className="main_container empty-state">
             <h1>Shopping Cart</h1>
             <div className="cart-layout">
                 <div className="cart-items-section">

@@ -73,7 +73,7 @@ const Checkout = () => {
     }
 
     return (
-        <div className="main_container">
+        <div className="main_container empty-state">
             <h1>Checkout</h1>
             <div className="formBox">
                 <h2>Order Summary</h2>
