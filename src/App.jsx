@@ -5,6 +5,7 @@ import './App.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar.jsx';
 import Shop from './pages/Shop.jsx';
+import ProductDetailsPage from './pages/ProductDetailsPage.jsx';
 
 
 // logic: making some quick placeholder components so the router has something to render while i build the actual pages later.
@@ -23,6 +24,7 @@ function App() {
           {/* mapping the url paths to the specific components. */}
           <Route path="/" element={<HomePage />} />
           <Route path="/shop" element={<Shop />} />
+          <Route path="/product/:id" element={<ProductDetailsPage />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/login" element={<LoginPage />} />
         </Routes>
