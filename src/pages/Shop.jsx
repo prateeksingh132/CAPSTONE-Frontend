@@ -18,7 +18,7 @@ const Shop = () => {
         <div className="main_container">
             <h1>Gadget Catalog</h1>
 
-            <div className="products-card">
+            <div className="products_container">
                 {/* logic: mapping over the product array and generating a react component for each document. */}
                 {products?.map((product) => (
                     <ProductCard key={product._id} product={product} />
