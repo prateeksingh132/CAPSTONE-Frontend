@@ -10,6 +10,7 @@ import Cart from './pages/Cart.jsx';
 import Checkout from './pages/Checkout.jsx';
 import LoginPage from './pages/LoginPage.jsx';
 import RegisterPage from './pages/RegisterPage.jsx';
+import AdminDashboard from './pages/AdminDashboard.jsx';
 
 
 // logic: making some quick placeholder components so the router has something to render while i build the actual pages later.
@@ -30,6 +31,7 @@ function App() {
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
+          <Route path="/admin" element={<AdminDashboard />} />
         </Routes>
       </main>
     </BrowserRouter>
