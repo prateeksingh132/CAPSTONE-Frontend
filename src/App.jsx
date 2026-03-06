@@ -4,11 +4,11 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar.jsx';
+import Shop from './pages/Shop.jsx';
 
 
 // logic: making some quick placeholder components so the router has something to render while i build the actual pages later.
 const HomePage = () => <h2>HomePage</h2>;
-const Shop = () => <h2>Shop</h2>;
 const Cart = () => <h2>Cart</h2>;
 const LoginPage = () => <h2>LoginPage</h2>;
 
