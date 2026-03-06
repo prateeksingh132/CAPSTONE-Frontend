@@ -7,12 +7,12 @@ import Navbar from './components/Navbar.jsx';
 import Shop from './pages/Shop.jsx';
 import ProductDetailsPage from './pages/ProductDetailsPage.jsx';
 import Cart from './pages/Cart.jsx';
+import Checkout from './pages/Checkout.jsx';
 
 
 // logic: making some quick placeholder components so the router has something to render while i build the actual pages later.
 const HomePage = () => <h2>HomePage</h2>;
 const LoginPage = () => <h2>LoginPage</h2>;
-const Checkout = () => <h2>Checkout</h2>;
 
 function App() {
 
