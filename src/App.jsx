@@ -12,10 +12,15 @@ import LoginPage from './pages/LoginPage.jsx';
 import RegisterPage from './pages/RegisterPage.jsx';
 import AdminDashboard from './pages/AdminDashboard.jsx';
 import Footer from './components/Footer.jsx';
+import HeroCarousel from './components/HeroCarousel.jsx';
 
 
 // logic: making some quick placeholder components so the router has something to render while i build the actual pages later.
-const HomePage = () => <h2>HomePage</h2>;
+const HomePage = () => (
+  <div>
+    <HeroCarousel />
+  </div>
+);
 
 function App() {
 
