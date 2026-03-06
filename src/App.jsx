@@ -8,11 +8,12 @@ import Shop from './pages/Shop.jsx';
 import ProductDetailsPage from './pages/ProductDetailsPage.jsx';
 import Cart from './pages/Cart.jsx';
 import Checkout from './pages/Checkout.jsx';
+import LoginPage from './pages/LoginPage.jsx';
+import RegisterPage from './pages/RegisterPage.jsx';
 
 
 // logic: making some quick placeholder components so the router has something to render while i build the actual pages later.
 const HomePage = () => <h2>HomePage</h2>;
-const LoginPage = () => <h2>LoginPage</h2>;
 
 function App() {
 
@@ -28,6 +29,7 @@ function App() {
           <Route path="/cart" element={<Cart />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
         </Routes>
       </main>
     </BrowserRouter>

@@ -249,3 +249,17 @@ body {
 .footer_link:hover {
   color: #ff6600;
 }
+
+
+
+/* --------------------------------------------- */
+
+.in-stock-text {
+  color: #28a745;
+  font-weight: bold;
+}
+
+.out-of-stock-text {
+  color: #cc0000;
+  font-weight: bold;
+}
