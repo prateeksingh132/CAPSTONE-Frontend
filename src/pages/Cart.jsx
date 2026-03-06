@@ -3,6 +3,7 @@ import { useCart } from '../context/CartContext.jsx';
 
 ////from sba 320
 // logic: building out the cart page
+// BUG: button doesnt disable when product's quantity reaches stock value. user can click the + button to increase quantity infinitely --  FIXED
 
 const Cart = () => {
     const { state, dispatch } = useCart();
@@ -77,7 +78,7 @@ const Cart = () => {
                                 <button
                                     className="btn"
                                     onClick={() => updateQuantityHandler(item, item.quantity + 1)}
-                                    disabled={item.quantity === item.stock}
+                                    disabled={item.quantity >= item.stock}
                                 >
                                     +
                                 </button>
