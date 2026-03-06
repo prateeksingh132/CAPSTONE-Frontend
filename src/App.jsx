@@ -6,13 +6,13 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar.jsx';
 import Shop from './pages/Shop.jsx';
 import ProductDetailsPage from './pages/ProductDetailsPage.jsx';
+import Cart from './pages/Cart.jsx';
 
 
 // logic: making some quick placeholder components so the router has something to render while i build the actual pages later.
 const HomePage = () => <h2>HomePage</h2>;
-const Cart = () => <h2>Cart</h2>;
 const LoginPage = () => <h2>LoginPage</h2>;
-
+const Checkout = () => <h2>Checkout</h2>;
 
 function App() {
 
@@ -26,6 +26,7 @@ function App() {
           <Route path="/shop" element={<Shop />} />
           <Route path="/product/:id" element={<ProductDetailsPage />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/checkout" element={<Checkout />} />
           <Route path="/login" element={<LoginPage />} />
         </Routes>
       </main>
