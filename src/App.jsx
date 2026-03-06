@@ -11,6 +11,7 @@ import Checkout from './pages/Checkout.jsx';
 import LoginPage from './pages/LoginPage.jsx';
 import RegisterPage from './pages/RegisterPage.jsx';
 import AdminDashboard from './pages/AdminDashboard.jsx';
+import Footer from './components/Footer.jsx';
 
 
 // logic: making some quick placeholder components so the router has something to render while i build the actual pages later.
@@ -35,6 +36,7 @@ function App() {
             <Route path="/admin" element={<AdminDashboard />} />
           </Routes>
         </main>
+        <Footer />
       </div>
     </BrowserRouter>
   );

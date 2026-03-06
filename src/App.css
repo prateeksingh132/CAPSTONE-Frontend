@@ -237,6 +237,27 @@ body {
   padding: 30px 50px;
   margin-top: auto;
   border-top: 3px solid #ff6600;
+  /* added flex to separate brand and links */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.footer_brand h3 {
+  margin: 0 0 10px 0;
+  color: #ff6600;
+}
+
+.footer_brand p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.footer_links {
+  display: flex;
+  gap: 15px;
 }
 
 .footer_link {
