@@ -15,6 +15,7 @@ import Footer from './components/Footer.jsx';
 import HeroCarousel from './components/HeroCarousel.jsx';
 import HomePage from './pages/HomePage.jsx';
 import Toast from './components/Toast.jsx';
+import TechAdvisor from './pages/TechAdvisor.jsx';
 
 
 
@@ -38,6 +39,7 @@ function App() {
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/admin" element={<AdminDashboard />} />
+            <Route path="/advisor" element={<TechAdvisor />} />
           </Routes>
         </main>
         <Footer />
