@@ -1,8 +1,13 @@
 import ProductCard from '../components/ProductCard.jsx';
 import { useGetProductsQuery } from '../features/apiSlice.js';
+import useDocumentTitle from '../hooks/useDocumentTitle.js';
 
 // logic: this is my main inventory page. i am hooking it up to my rtk query api slice so it fetches data automatically.
 const Shop = () => {
+
+    // logic: firing my custom hook so the tab says GadgetShack | Catalog.
+    useDocumentTitle('Catalog');
+
     // logic: pulling the loading state, error, and actual data array straight from my redux cache. 
     const { data: products, isLoading, error } = useGetProductsQuery('');
 
@@ -11,8 +16,8 @@ const Shop = () => {
     ////////////
 
     // checking laoding state and error if any 
-    if (isLoading) return <h2>Loading catalog...</h2>;
-    if (error) return <h2>Error fetching products. Check server connection.</h2>;
+    if (isLoading) return <h2 className="loading-text">Loading catalog...</h2>;
+    if (error) return <h2 className="loading-text" style={{color: 'red'}}>Error fetching products. Check server connection.</h2>;
 
     return (
         <div className="main_container">

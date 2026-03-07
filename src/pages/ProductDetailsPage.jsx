@@ -1,6 +1,7 @@
 import { useParams, Link } from 'react-router-dom';
 import { useGetProductByIdQuery } from '../features/apiSlice.js';
 import { useCart } from '../context/CartContext.jsx';
+import useDocumentTitle from '../hooks/useDocumentTitle.js';
 
 // logic: building a dedicated page for a single item. users can see full descriptions and specs.
 // https://stackoverflow.com/questions/77808914/how-extract-id-from-react-router-with-useparams
@@ -12,14 +13,17 @@ const ProductDetailsPage = () => {
     const { data: product, isLoading, error } = useGetProductByIdQuery(id);
     const { dispatch } = useCart();
 
+    // logic: showing dynamic tab title based on what product is clicked. if it is still fetching, it will just says loading...
+    useDocumentTitle(product ? product.name : 'Loading...');
+
     ////////////TESTING
     // console.log('TESTING: loading product details for url id:', id);
     ////////////
 
     // logic: checking laoding state and error if any. i m doing returns here so the app doesnt crash while the network request is still pending.
-    if (isLoading) return <h2>Loading product details...</h2>;
-    if (error) return <h2>Error fetching product. Check server connection.</h2>;
-    if (!product) return <h2>Product not found.</h2>;
+    if (isLoading) return <h2 className="loading-text">Loading product details...</h2>;
+    if (error) return <h2 className="loading-text">Error fetching product. Check server connection.</h2>;
+    if (!product) return <h2 className="loading-text">Product not found.</h2>;
 
     const addToCartHandler = () => {
         // dispatching to the global cart state again.
@@ -30,7 +34,7 @@ const ProductDetailsPage = () => {
         <div className="main_container">
             <Link to="/shop" className="btn">&larr; Back to Shop</Link>
 
-            <div className="product-details">
+            <div className="product-details" style={{ maxWidth: '900px', margin: '0 auto', padding: '20px', minHeight: '2000px' }}>
                 <div className="product-image-box">
                     <img src={product.image} alt={product.name} />
                 </div>
