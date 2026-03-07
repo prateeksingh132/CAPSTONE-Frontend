@@ -516,3 +516,22 @@ body {
     opacity: 1;
   }
 }
+
+
+/* -------------- Error styling -------------- */
+.fallback_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-top: 10vh;
+  gap: 15px;
+}
+
+.error_heading {
+  font-size: 6rem;
+  color: #cc0000;
+  margin: 0;
+  line-height: 1;
+}

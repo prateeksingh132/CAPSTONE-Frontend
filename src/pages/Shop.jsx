@@ -26,6 +26,10 @@ const Shop = () => {
     if (isLoading) return <h2 className="loading-text">Loading catalog...</h2>;
     if (error) return <h2 className="loading-text" style={{ color: 'red' }}>Error fetching products. Check server connection.</h2>;
 
+    ////////////TESTING
+    // throw new Error("error boundary test!");
+    ////////////
+
     return (
         <div className="main_container">
             <h1>Gadget Catalog</h1>
