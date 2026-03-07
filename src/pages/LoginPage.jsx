@@ -26,6 +26,10 @@ const LoginPage = () => {
             if (res.ok) {
                 const data = await res.json();
 
+
+                // logic: saving the user profile to localstorage so my route guards know who is logged in.
+                localStorage.setItem('userInfo', JSON.stringify(data));
+
                 ////////////TESTING
                 // console.log('TESTING: user logged in successfully:', data);
                 ////////////

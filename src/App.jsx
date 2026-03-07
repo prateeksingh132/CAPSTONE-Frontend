@@ -16,7 +16,7 @@ import HeroCarousel from './components/HeroCarousel.jsx';
 import HomePage from './pages/HomePage.jsx';
 import Toast from './components/Toast.jsx';
 import TechAdvisor from './pages/TechAdvisor.jsx';
-
+import { PrivateRoute, AdminRoute } from './components/RouteGuards.jsx';
 
 
 function App() {
@@ -35,11 +35,20 @@ function App() {
             <Route path="/shop" element={<Shop />} />
             <Route path="/product/:id" element={<ProductDetailsPage />} />
             <Route path="/cart" element={<Cart />} />
-            <Route path="/checkout" element={<Checkout />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
-            <Route path="/admin" element={<AdminDashboard />} />
             <Route path="/advisor" element={<TechAdvisor />} />
+
+            {/* logic: wrapping protected routes in my custom route guard components */}
+            <Route element={<PrivateRoute />}>
+              <Route path="/checkout" element={<Checkout />} />
+            </Route>
+
+            {/* logic: wrapping strict admin routes */}
+            <Route element={<AdminRoute />}>
+              <Route path="/admin" element={<AdminDashboard />} />
+            </Route>
+
           </Routes>
         </main>
         <Footer />
