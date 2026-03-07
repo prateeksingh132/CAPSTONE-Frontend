@@ -68,7 +68,7 @@ const Cart = () => {
 
                             <div className="cart-item-actions">
                                 <button
-                                    className="btn"
+                                    className="btn btn-small btn-secondary"
                                     onClick={() => updateQuantityHandler(item, item.quantity - 1)}
                                     disabled={item.quantity === 1}
                                 >
@@ -76,7 +76,7 @@ const Cart = () => {
                                 </button>
                                 <span className="quantity-text">{item.quantity}</span>
                                 <button
-                                    className="btn"
+                                    className="btn btn-small btn-secondary"
                                     onClick={() => updateQuantityHandler(item, item.quantity + 1)}
                                     disabled={item.quantity >= item.stock}
                                 >
@@ -86,7 +86,7 @@ const Cart = () => {
 
                             <div className="cart-item-remove">
                                 <button
-                                    className="btn remove-btn"
+                                    className="btn remove-btn btn-small btn-danger"
                                     onClick={() => removeFromCartHandler(item._id)}
                                 >
                                     Remove

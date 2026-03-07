@@ -14,30 +14,34 @@ import AdminDashboard from './pages/AdminDashboard.jsx';
 import Footer from './components/Footer.jsx';
 import HeroCarousel from './components/HeroCarousel.jsx';
 import HomePage from './pages/HomePage.jsx';
+import Toast from './components/Toast.jsx';
 
 
 function App() {
 
   return (
-    <BrowserRouter>
-      <div className="app_wrapper">
-        <Navbar />
-        <main className="main_content_area">
-          <Routes>
-            {/* mapping the url paths to the specific components. */}
-            <Route path="/" element={<HomePage />} />
-            <Route path="/shop" element={<Shop />} />
-            <Route path="/product/:id" element={<ProductDetailsPage />} />
-            <Route path="/cart" element={<Cart />} />
-            <Route path="/checkout" element={<Checkout />} />
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/register" element={<RegisterPage />} />
-            <Route path="/admin" element={<AdminDashboard />} />
-          </Routes>
-        </main>
-        <Footer />
-      </div>
-    </BrowserRouter>
+      <BrowserRouter>
+        <div className="app_wrapper">
+
+          <Toast />
+
+          <Navbar />
+          <main className="main_content_area">
+            <Routes>
+              {/* mapping the url paths to the specific components. */}
+              <Route path="/" element={<HomePage />} />
+              <Route path="/shop" element={<Shop />} />
+              <Route path="/product/:id" element={<ProductDetailsPage />} />
+              <Route path="/cart" element={<Cart />} />
+              <Route path="/checkout" element={<Checkout />} />
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="/register" element={<RegisterPage />} />
+              <Route path="/admin" element={<AdminDashboard />} />
+            </Routes>
+          </main>
+          <Footer />
+        </div>
+      </BrowserRouter>
   );
 };
 

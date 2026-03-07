@@ -160,6 +160,27 @@ body {
   transform: translateY(-2px);
 }
 
+.btn-small {
+  padding: 5px 12px;
+  font-size: 1rem;
+  margin-top: 0;
+}
+
+.btn-secondary {
+  background-color: #003366;
+}
+
+.btn-secondary:hover {
+  background-color: #002244;
+}
+
+.btn-danger {
+  background-color: #cc0000;
+}
+
+.btn-danger:hover {
+  background-color: #990000;
+}
 
 
 /* -------------- Carousel container styling--------------  */
@@ -432,7 +453,7 @@ body {
 /* -------------- Admin dashboard styling --------------  */
 
 /* fixing the admin chart so it aligns well in the screen instead of being squished */
-.main_container > .card:has(.recharts-wrapper) {
+.main_container>.card:has(.recharts-wrapper) {
   width: 100%;
   max-width: 1000px;
   margin: 0 auto;
@@ -449,4 +470,49 @@ body {
   margin-top: 10vh;
   text-align: center;
   gap: 20px;
+}
+
+
+
+
+/* -------------- Toast styling -------------- */
+
+/* goal: i wanna make the toast to float perfectly at the top center of the screen above the navbar */
+.toast_container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 15px 25px;
+  border-radius: 4px;
+  color: white;
+  z-index: 9999;
+  /* this forces the toast to sit on top of the navbar and images */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  animation: slideInRight 0.3s ease-out forwards;
+}
+
+.toast_success {
+  background-color: #28a745;
+}
+
+.toast_error {
+  background-color: #cc0000;
+}
+
+.toast_message {
+  margin: 0;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
