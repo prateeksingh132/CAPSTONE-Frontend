@@ -34,7 +34,7 @@ const ProductDetailsPage = () => {
         <div className="main_container">
             <Link to="/shop" className="btn">&larr; Back to Shop</Link>
 
-            <div className="product-details" style={{ maxWidth: '900px', margin: '0 auto', padding: '20px', minHeight: '2000px' }}>
+            <div className="product-details">
                 <div className="product-image-box">
                     <img src={product.image} alt={product.name} />
                 </div>
