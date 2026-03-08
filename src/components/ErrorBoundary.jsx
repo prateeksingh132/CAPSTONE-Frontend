@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 // the idea is that if a component randomly crashes, this boundary catches it so the whole screen doesnt just crash and freeze.
 // https://github.com/alan2207/bulletproof-react
 // https://www.youtube.com/watch?v=_FuDMEgIy7I
-// https://www.youtube.com/watch?v=gyqAW0--0Tc
+// https://www.youtube.com/watch?v=DNYXgtZBRPE
 
 class ErrorBoundary extends Component {
     constructor(props) {
