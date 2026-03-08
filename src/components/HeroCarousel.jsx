@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import gamingLaptop from '../images/gamingLaptop.jpg';
-import headset from '../images/headset.jpg';
-import proLaptop from '../images/proLaptop.jpg';
-import smartphones from '../images/smartphones.jpg';
-import speaker from '../images/speaker.jpg';
-import smartwatch from '../images/smartwatch.jpg';
-import tablet from '../images/tablet.jpg';
+// import gamingLaptop from '../images/gamingLaptop.jpg';
+// import headset from '../images/headset.jpg';
+// import proLaptop from '../images/proLaptop.jpg';
+// import smartphones from '../images/smartphones.jpg';
+// import speaker from '../images/speaker.jpg';
+// import smartwatch from '../images/smartwatch.jpg';
+// import tablet from '../images/tablet.jpg';
 
 //// referred from sba 320
 // logic: i am gonna build an automatic image carousel that changes images smoothly
@@ -20,13 +20,13 @@ const HeroCarousel = () => {
 
     // array of images for the carousel background
     const images = [
-        gamingLaptop,
-        headset,
-        proLaptop,
-        smartphones,
-        speaker,
-        smartwatch,
-        tablet
+        '/images/gamingLaptop.jpg',
+        '/images/headset.jpg',
+        '/images/proLaptop.jpg',
+        '/images/smartphones.jpg',
+        '/images/speaker.jpg',
+        '/images/smartwatch.jpg',
+        '/images/tablet.jpg'
     ];
 
     const [currentIndex, setCurrentIndex] = useState(0);
