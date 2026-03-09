@@ -118,7 +118,7 @@ here is a detailed step-by-step guide on how to install and test the frontend re
 
 5. **auth and admin (`/login`, `/admin`):**
     * **frontend validation:** on the register page, i added a check `if (password !== confirmPassword)`, to catch typos before even bothering to hit the backend.
-    * **authentication:** when you log in, rtk query hits the backend, which sets a secure `httpOnly` cookie. the frontend gets the user profile back and saves your role to `localStorage`.
+    * **authentication:** when you log in, the frontend fires a manual `fetch` request to the backend, which sets a secure `httpOnly` cookie. the frontend gets the user profile back and saves your role to `localStorage`.
     * **admin dashboard:** the navbar checks this profile and conditionally renders the "Dashboard" link only if you have admin privileges. clicking it loads the recharts sales graph.
 
 6. **the checkout (`/checkout`):** 
