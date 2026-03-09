@@ -109,6 +109,11 @@ here is a detailed step-by-step guide on how to install and test the frontend re
     * **url parameters:** you click a product card and `useParams` grabs the id straight from the url to fetch the exact item.
     * **dynamic specs:** you can see the dynamic specs and click "add to cart". (quantity adjustments are handled directly in the cart page).
     * **stock validation:** the "add to cart" button physically disables itself if the item's stock hits zero.
+    * **full crud functionality:** if the user is logged in as an admin, a special controls box renders with buttons to delete the product or quickly restock it, this enables my application all four crud routes to the backend:
+        * **get (read):** fetching the catalog and individual product details using rtk query.
+        * **post (create):** submitting a new order at checkout and securely logging in.
+        * **put (update):** using the "quick restock" button on this page to instantly update the inventory count to 100.
+        * **delete (delete):** using the "delete product" button on this page to permanently remove an item from the db.
 
 4. **the shopping cart (`/cart`):**
     * **review items:** you can reviews your items here. you can adjust quantities using the + and - buttons.
