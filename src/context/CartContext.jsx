@@ -1,4 +1,4 @@
-import { createContext, useReducer, useContext } from 'react';
+import { createContext, useReducer, useContext, useEffect } from 'react';
 
 ///// referring from sba 320
 // logic: creating the context object here so i can share the cart state globally across the app.
@@ -61,6 +61,10 @@ export const CartProvider = ({ children }) => {
     ////////////TESTING
     // console.log('TESTING: cart provider initialized with state: ', state);
     ////////////
+
+    useEffect(() => {
+        localStorage.setItem('cartItems', JSON.stringify(state.cartItems));
+    }, [state.cartItems]);
 
     return (
         <CartContext.Provider value={{ state, dispatch }}>
