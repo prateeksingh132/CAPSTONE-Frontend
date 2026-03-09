@@ -86,6 +86,8 @@ my goal for the view was to make the app look good, fast, secure and feel like a
 here is a detailed step-by-step guide on how to install and test the frontend react application locally. the idea is that since this is a decoupled app, you must have the backend node server running on port 3000 at the same time, otherwise all the rtk query api calls will fail and just show loading errors on the screen.
 
 **installation and startup:**
+
+   * note: you must have the backend server already running on port 3000 in a separate terminal window before starting the frontend, otherwise the api calls will fail.
    * clone the frontend repository and open your terminal.
    * run `npm install` to grab all the dependencies (vite, react-router-dom, redux toolkit, recharts, etc).
    * run `npm run dev` to start the vite development server.
