@@ -136,6 +136,12 @@ here is a detailed step-by-step guide on how to install and test the frontend re
     * **loading state:** when you type a prompt into the chat, the `isLoading` state disables the submit button while the ai thinks.
     * **generative ui:** it then renders the text and the direct links if a product is recommended.
 
+8. **order history (`/order-history`):** 
+    * **secure fetching:** you can navigate to this secure page to view your past purchases. it fires a manual fetch request to securely grab only your specific orders from the database.
+    * **order receipts:** you can see your past receipts rendered dynamically as my code maps over the embedded `orderItems` array.
+    * **snapshot usage:** you will see the snapshot historical price displayed next to the item name. so even if the prices changes later, this snapshot remains same.
+
+
 
 
 # Testing
