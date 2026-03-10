@@ -114,6 +114,7 @@ here is a detailed step-by-step guide on how to install and test the frontend re
         * **post (create):** submitting a new order at checkout and securely logging in.
         * **put (update):** using the "quick restock" button on this page to instantly update the inventory count to 100.
         * **delete (delete):** using the "delete product" button on this page to permanently remove an item from the db.
+    * **customer reviews:** you can scroll to the bottom of the page to see customer feedback. my code maps over the populated reviews array sent from the backend and dynamically renders the username, rating and comment.
 
 4. **the shopping cart (`/cart`):**
     * **review items:** you can reviews your items here. you can adjust quantities using the + and - buttons.
