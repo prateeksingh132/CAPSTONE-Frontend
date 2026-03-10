@@ -122,6 +122,22 @@ const ProductDetailsPage = () => {
                         </button>
                     </div>
 
+                    {/* logic: mapping over the populated reviews array to display them */}
+                    <div className="formBox">
+                        <h3>Customer Reviews</h3>
+                        {product.reviews && product.reviews.length > 0 ? (
+                            product.reviews.map(review => (
+                                <div key={review._id} className="card">
+                                    <h4 className="price">{review.user?.username || 'Verified Customer'}</h4>
+                                    <p className="in-stock-text">Rating: {review.rating}/5</p>
+                                    <p>{review.comment}</p>
+                                </div>
+                            ))
+                        ) : (
+                            <p className="loading-text">No reviews yet for this product.</p>
+                        )}
+                    </div>
+
                     {/* i m rendering the admin crud controls here. delete (Delete Product) and update (Quick Restock (100)) */}
                     {userInfo && userInfo.role === 'admin' && (
                         <div className="formBox">
