@@ -5,7 +5,7 @@ import { useToast } from '../context/ToastContext.jsx';
 //// from sba 320
 // logic: i am building the main navigation bar here
 
-// BUG: logout is successful, but not able to redirect to login
+// BUG: logout is successful, but not able to redirect to login - FIXED
 
 const Navbar = () => {
     // logic: grabbing the state object from the context
@@ -62,6 +62,8 @@ const Navbar = () => {
                     <>
                         {/* logic: only rendering the dashboard link if they have admin privileges */}
                         {userInfo.role === 'admin' && <li><Link to="/admin">Dashboard</Link></li>}
+                        {/* logic: letting regular users view their snapshot order history */}
+                        <li><Link to="/order-history">Order History</Link></li>
                         <li><Link to="#" onClick={logoutHandler}>Logout</Link></li>
                     </>
                 ) : (

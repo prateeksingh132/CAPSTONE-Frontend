@@ -16,6 +16,7 @@ import TechAdvisor from './pages/TechAdvisor.jsx';
 import { PrivateRoute, AdminRoute } from './components/RouteGuards.jsx';
 import ErrorBoundary from './components/ErrorBoundary.jsx';
 import NotFound from './pages/NotFound.jsx';
+import OrderHistory from './pages/OrderHistory.jsx';
 
 
 function App() {
@@ -43,6 +44,7 @@ function App() {
               {/* logic: wrapping protected routes in my custom route guard components */}
               <Route element={<PrivateRoute />}>
                 <Route path="/checkout" element={<Checkout />} />
+                <Route path="/order-history" element={<OrderHistory />} />
               </Route>
 
               {/* logic: wrapping strict admin routes */}
