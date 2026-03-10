@@ -143,6 +143,14 @@ here is a detailed step-by-step guide on how to install and test the frontend re
     * **snapshot usage:** you will see the snapshot historical price displayed next to the item name. so even if the prices changes later, this snapshot remains same.
 
 
+### Future work
+there were a few features i planned for this capstone ui but couldnt get to. i will definitely add these later:
+*   **wishlist toggle:** since my database is already set up for it, i wanna add a little heart icon on the `ProductCard` component so users can save items to their profile without putting them in the cart.
+*   **submit review form:** right now, you can only read the seeded reviews on the product details page which shows that the schemas are linked. i wanna build a controlled react form so logged-in users can actually leave ratings between 1-5 star and comment dynamically.
+*   **stripe checkout ui:** the current checkout form just simulates a successful order. i want to integrate stripe's react components to handle real credit card validation on the frontend.
+*   **pagination controls:** once my backend supports it, i wanna add "next page" and "previous" buttons to the shop catalog so it doesn't load this huge inventory all at once.
+
+
 
 
 # Testing
