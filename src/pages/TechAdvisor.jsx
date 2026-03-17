@@ -1,104 +1,101 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import ProductCard from '../components/ProductCard.jsx';
+import useDocumentTitle from '../hooks/useDocumentTitle.js';
 
-// logic: building the frontend interface for my tech advisor.
-// the idea is that users can type a question and my node backend talks to openai securely.
-// https://github.com/razak571/turboGPT
-// https://github.com/deepankkartikey/AI-Coding-Assistant
-// https://www.youtube.com/watch?v=wrHTcjSZQ1Y
-
+// goal: building the tech advisor page so users can chat with the ai.
+// the idea is that when the backend tool calling returns a ui_component flag, i mount the actual product card right in the chat feed.
 const TechAdvisor = () => {
-    const [prompt, setPrompt] = useState('');
-    const [chatHistory, setChatHistory] = useState([]);
-    const [isLoading, setIsLoading] = useState(false);
+    const [input, setInput] = useState("");
+    const [messages, setMessages] = useState([
+        { sender: 'advisor', text: "Hi! I'm your Tech Advisor. Tell me what you're looking for, and I'll check the warehouse.", type: 'text' }
+    ]);
+    const [isTyping, setIsTyping] = useState(false);
 
-    const submitHandler = async (e) => {
-        e.preventDefault();
-        if (!prompt) return;
+    useDocumentTitle('Tech Advisor');
 
-        // logic: save the user message to the page right away so the ui feels fast
-        const userMsg = { role: 'user', text: prompt };
-        setChatHistory(prev => [...prev, userMsg]);
-        setPrompt('');
-        setIsLoading(true);
+    const sendMessage = async () => {
+        if (!input.trim()) return;
+
+        // logic: optimistically updating the ui with the user's prompt so it feels instant.
+        setMessages((prev) => [...prev, { sender: 'user', text: input, type: 'text' }]);
+        const currentPrompt = input;
+        setInput("");
+        setIsTyping(true);
 
         try {
-            // logic: sending a fetch request to my backend
+            // logic: hitting my secure express proxy route instead of exposing an api key.
             const res = await fetch('/api/chat/ask', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ prompt: userMsg.text })
+                body: JSON.stringify({ prompt: currentPrompt })
             });
 
-            if (res.ok) {
-                const data = await res.json();
+            const data = await res.json();
 
-                ////////////TESTING
-                // console.log('TESTING: received advisor response:', data);
-                ////////////
 
-                const advisorMsg = {
-                    role: 'advisor',
-                    text: data.reply,
-                    // logic: grabbing the product id so i can render a link to it later
-                    productId: data.recommendedProductId
-                };
-                setChatHistory(prev => [...prev, advisorMsg]);
-            } else {
-                const errorMsg = { role: 'advisor', text: 'i am having trouble connecting to my database right now. try again later.' };
-                setChatHistory(prev => [...prev, errorMsg]);
+            // logic: intercepting backend 500 errors before spreading them into state.
+            // if res.ok is false, data has a 'message' property, not 'text'. we map it correctly here to prevent blank cards.
+            if (!res.ok) {
+                setMessages((prev) => [...prev, { sender: 'advisor', text: data.message || "Internal server error.", type: 'text' }]);
+                return;
             }
+
+            ////////////TESTING
+            // console.log('TESTING: advisor response received:', data);
+            ////////////
+
+            // logic: appending the advisor's response. spreading the data object pulls in the text, type and the mongodb productData perfectly.
+            setMessages((prev) => [...prev, { sender: 'advisor', ...data }]);
+
         } catch (error) {
-            const errorMsg = { role: 'advisor', text: 'network error. check your connection.' };
-            setChatHistory(prev => [...prev, errorMsg]);
+            console.error("failed to fetch advisor response:", error);
+            setMessages((prev) => [...prev, { sender: 'advisor', text: "Connection error. Please try again.", type: 'text' }]);
+        } finally {
+            setIsTyping(false);
         }
-        setIsLoading(false);
     };
 
     return (
         <div className="main_container">
-            <h1>Ask Our Tech Advisor</h1>
+            <h1>GadgetShack Tech Advisor</h1>
 
-            {/* logic: checking if history is empty to show a nice greeting using my pulsing class */}
-            {chatHistory.length === 0 && (
-                <h2 className="loading-text">Hello! I am the GadgetShack Tech Advisor. What are you looking for today?</h2>
-            )}
+            {/* logic: utilizing existing card classes for the chat feed to avoid inline css */}
+            <div className="card tech-advisor-feed">
+                {messages.map((msg, index) => (
+                    <div key={index} className="formBox">
+                        <p className={msg.sender === 'user' ? "price" : "in-stock-text"}>
+                            <strong>{msg.sender === 'user' ? 'You: ' : 'Advisor: '}</strong> {msg.text}
+                        </p>
 
-            <div className="products-grid">
-                {/* logic: mapping over the chat array and rendering cards for the messages */}
-                {chatHistory.map((msg, index) => (
-                    <div key={index} className="card">
-                        <h3 className={msg.role === 'user' ? 'price' : 'in-stock-text'}>
-                            {msg.role === 'user' ? 'You:' : 'Advisor:'}
-                        </h3>
-                        <p>{msg.text}</p>
+                        {/* logic: generative ui mapping. if the backend flagged this as a ui_component, we render the live product card! */}
+                        {/* this forces the model to only recommend products that actually exist in my store. */}
+                        {msg.type === 'ui_component' && msg.productData && (
+                            <div className="products_container">
+                                <ProductCard product={msg.productData} />
+                            </div>
+                        )}
 
-                        {/* logic: if the advisor recommended a specific product from my db, i m gonna show a direct button link to it */}
-                        {msg.productId && msg.productId !== 'null' && (
-                            <Link to={`/product/${msg.productId}`} className="btn">
-                                View Recommended Product
-                            </Link>
+                        {msg.type === 'ui_component' && !msg.productData && (
+                            <p className="out-of-stock-text">Item out of stock or not found in warehouse.</p>
                         )}
                     </div>
                 ))}
+
+                {isTyping && <p className="loading-text">Advisor is thinking...</p>}
             </div>
 
-            {isLoading && <p className="loading-text">Advisor is thinking...</p>}
-
             <div className="formBox">
-                <form onSubmit={submitHandler}>
-                    <input
-                        type="text"
-                        placeholder="e.g., I need a cheap laptop for school..."
-                        value={prompt}
-                        onChange={(e) => setPrompt(e.target.value)}
-                        disabled={isLoading}
-                        required
-                    />
-                    <button type="submit" className="btn" disabled={isLoading || !prompt}>
-                        {isLoading ? 'Sending...' : 'Ask'}
-                    </button>
-                </form>
+                <input
+                    type="text"
+                    value={input}
+                    onChange={(e) => setInput(e.target.value)}
+                    onKeyDown={(e) => e.key === 'Enter' && sendMessage()}
+                    placeholder="Ask for a gadget recommendation..."
+                    required
+                />
+                <button className="btn" onClick={sendMessage} disabled={isTyping}>
+                    {isTyping ? 'Searching...' : 'Ask Advisor'}
+                </button>
             </div>
         </div>
     );
