@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import useDocumentTitle from '../hooks/useDocumentTitle.js';
+import Loader from '../components/Loader.jsx';
 
 // logic: building a order history page .
 const OrderHistory = () => {
@@ -35,7 +36,7 @@ const OrderHistory = () => {
         fetchOrderHistory();
     }, []);
 
-    if (loading) return <h2 className="loading-text">Loading order history...</h2>;
+    if (loading) return <Loader />;
     if (error) return <h2 className="out-of-stock-text">{error}</h2>;
 
     return (

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
 import { useNavigate } from 'react-router-dom';
+import Loader from '../components/Loader.jsx';
 
 // logic: building the admin dashboard
 // the idea is that in backend i create analytics data (already done in backend) through $group stages (aggregation) and i receive a json array of daily sales. 
@@ -48,7 +49,7 @@ const AdminDashboard = () => {
     }, [navigate]);
 
     
-    if (loading) return <h2 className="loading-text">Loading business analytics...</h2>;
+    if (loading) return <Loader />;
 
     // logic: using my red text class to display access errors clearly
     if (error) return <div className="main_container"><h2 className="out-of-stock-text">{error}</h2></div>;

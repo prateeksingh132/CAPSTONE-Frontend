@@ -3,6 +3,7 @@ import { useGetProductsQuery } from '../features/apiSlice.js';
 import useDocumentTitle from '../hooks/useDocumentTitle.js';
 import { useState } from 'react';
 import VoiceSearch from '../components/VoiceSearch.jsx';
+import Loader from '../components/Loader.jsx';
 
 // logic: this is my main inventory page. i am hooking it up to my rtk query api slice so it fetches data automatically.
 const Shop = () => {
@@ -23,7 +24,7 @@ const Shop = () => {
     ////////////
 
     // checking laoding state and error if any 
-    if (isLoading) return <h2 className="loading-text">Loading catalog...</h2>;
+    if (isLoading) return <Loader />;
     if (error) return <h2 className="loading-text" style={{ color: 'red' }}>Error fetching products. Check server connection.</h2>;
 
     ////////////TESTING

@@ -3,6 +3,7 @@ import { useGetProductByIdQuery } from '../features/apiSlice.js';
 import { useCart } from '../context/CartContext.jsx';
 import { useToast } from '../context/ToastContext.jsx';
 import useDocumentTitle from '../hooks/useDocumentTitle.js';
+import Loader from '../components/Loader.jsx';
 
 // logic: building a dedicated page for a single item. users can see full descriptions and specs. 
 // full crud functionality: if the user is logged in as an admin, a special controls box renders with buttons to delete the product (DELETE) or quickly restock it (PUT).
@@ -29,7 +30,7 @@ const ProductDetailsPage = () => {
     ////////////
 
     // logic: checking laoding state and error if any. i m doing returns here so the app doesnt crash while the network request is still pending.
-    if (isLoading) return <h2 className="loading-text">Loading product details...</h2>;
+    if (isLoading) return <Loader />;
     if (error) return <h2 className="loading-text">Error fetching product. Check server connection.</h2>;
     if (!product) return <h2 className="loading-text">Product not found.</h2>;
 
